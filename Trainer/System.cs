@@ -139,12 +139,12 @@ namespace Trainer
                     string task = Console.ReadLine();
                     if (!File.Exists($"TrainingApp/{day}/{group}/{task}"))
                     {
-                        Console.Write("Введите кол-во подходов: ");
+                        Console.Write("Введите описание упражнению: ");
                         string taskTime = Console.ReadLine();
 
-                        File.WriteAllText($"TrainingApp/{day}/{group}/{task}", taskTime);
+                        File.WriteAllText($"TrainingApp/{day}/{group}/{task}.txt", taskTime);
 
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Упражнение добавлено");
                         Console.ForegroundColor = ConsoleColor.White;
                     }
@@ -333,24 +333,27 @@ namespace Trainer
         {
             foreach (string i in Directory.GetDirectories("TrainingApp"))
             {
-                Console.WriteLine(i);
+                Console.WriteLine(i.Remove(0,12));
             }
+            Console.WriteLine();
         }
 
         private void showGroups(string day)
         {
             foreach (string i in Directory.GetDirectories($"TrainingApp/{day}"))
             {
-                Console.WriteLine(i);
+                Console.WriteLine(i.Remove(0, 12));
             }
+            Console.WriteLine();
         }
 
         private void showTasks(string day, string group)
         {
             foreach (string i in Directory.GetFiles($"TrainingApp/{day}/{group}"))
             {
-                Console.WriteLine(i);
+                Console.WriteLine(i.Remove(0, 12));
             }
+            Console.WriteLine();
         }
         private void guide()
         {
